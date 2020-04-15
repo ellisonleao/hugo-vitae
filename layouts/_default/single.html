@@ -6,17 +6,6 @@
 		{{ partial "header.html" . }}
 
 		<div class="post">
-			<div class="author">
-				{{ if eq .Site.Params.listAuthor true}}
-					{{ if isset .Params "author" }}
-						{{ if isset .Params "authorlink" }}
-							{{ i18n "authorpretext" }} <a href="{{ .Params.authorlink }}">{{ .Params.author }}</a>
-						{{ else }}
-							{{ i18n "authorpretext" }} {{ .Params.author }}
-						{{ end }}
-					{{ end }}
-				{{ end }}
-			</div>
 			<div class="post-header">
 				{{ if ne .Date.Year 1 }}
 					<div class="meta">
@@ -31,6 +20,9 @@
 				</div>
 			</div>
 			<div class="markdown">
+				{{ if ne .Type "page" }}
+                {{ i18n "readingTime" .ReadingTime }}
+                {{ end }} 
 				{{ .Content }}
 			</div>
 			<div class="tags">
