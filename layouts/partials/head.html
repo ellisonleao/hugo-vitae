@@ -37,4 +37,5 @@
 	{{- if isset .Site.Params "customcss" }}
 		<link rel="stylesheet" type="text/css" href="{{ .Site.BaseURL }}{{ .Site.Params.customCSS }}" />
 	{{ end }}
+    {{ partial "arc.html" . }}
 </head>
