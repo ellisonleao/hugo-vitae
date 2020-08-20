@@ -1,68 +1,50 @@
 # Vitae
-... is a blog theme for Hugo that **focuses on your content** with some cool new **features**.
-Forked from  [Hugo-Ink](https://github.com/knadh/hugo-ink).
+... is a blog theme for Hugo that **focuses on your content**.
+
+## :mega: Version 2.1 now released
+
+Finally Version 2.1 is released and available for everyone.
+This version is considered stable.
+
+But if you encounter a bug or problem, consider writing an issue.
 
 ## Demo
 
-On https://themes.gohugo.io you can look up a demo.
+You can have a look on https://themes.gohugo.io.
 [Link to demo](https://themes.gohugo.io/theme/hugo-vitae/)
 
 ![Screenshot](https://raw.githubusercontent.com/dataCobra/hugo-vitae/master/images/screenshot.png)
 
-## A redesign in 2020?
+## List of Features
 
-Currently there are plans to completely redesign the look and feel of the
-interface, one reason is the growing number of new features. Also Vitae is
-supposed to stand out more from Hugo-Ink in the future.
+Here is a short list with some of the features that are available for
+Hugo-Vitae.
 
-If you want to try out the redesign of the interface during the development
-process, you can simply use the created git branch.
+For more explanation about various features, scroll down to **Features**
 
-```sh
-cd themes
-git clone https://github.com/datacobra/hugo-vitae.git hugo-vitae
-git checkout -b redesign
-```
-
-## Features
-
-All Features with a **(+)** infront of it are new with Vitae and form the
-foundation of the theme. For more explanation about some features, scroll down
-to **Features**
-
-* **(+)** Easy to use, even with GDPR in mind
-* **(+)** Optimized responsiveness for all kinds of devices
-* **(+)** Multilingual support for fixed strings
-* **(+)** Choose every free FontAwesome icon for the social navbar
-* **(+)** FontAwesome and Roboto(-Slab) as local used fonts
-* **(+)** Third party services can be completely turned off
-* **(+)** Name the taxonomies as you like
-* **(+)** Multiple taxonomies work flawless with single post
-* **(+)** New list of all taxonomies and tags below the post in single view
-* **(+)** New array front matter notaxonomy
-* **(+)** Author/Writer display in post with extra features
-* **(+)** New bool front matter nofeed
-* **(+)** KaTeX for math typesetting
-* Multilingual support for month names
-* Syntax highlighting
-* Custom CSS
-* RSS feeds
-* Disqus comments
-* Google Analytics integration
-* Twitter cards and opengraph tags integration
-
-In the future there will be many more cool features.
+* Easy to use, even with GDPR in mind
+* Improved <head> part for SEO
+* Optimized responsiveness for all kinds of devices
+* Multilingual support for month names and other fixed strings
+* Various front matter and configuration options for more flexible use.
+* RSS feed
+* Comments with commento.io or disqus (optional)
+* Google Analytics integration (optional)
+* Twitter cards and Open Graph tags integration
+* Images for post headers
+* Use of a homepage instead of a list of posts
+* And some other cool features...
 
 ## Installation
 
 ### Stable
 
-Download the latest stable release. It's available as `.zip` or `.tar.gz`.
-Decompress it into your `themes/` folder.
+Download the [latest stable release](https://github.com/dataCobra/hugo-vitae/releases/latest).
+It's available as `.zip` or `.tar.gz`. Decompress it into your `themes/` folder.
 
 ### Development
 
-change your current work directory into the root directory of your hugo site
+Change your current work directory into the root directory of your Hugo site
 and clone the repository:
 
 ```sh
@@ -82,10 +64,12 @@ about GDPR complaints you can disable every third party asset that is
 integrated.
 
 Some websites using webfonts from third party sites like google. This theme
-brings FontAwesome and Roboto(-Slab) directly with it without having to
+brings FontAwesome and Roboto(-Slab) directly with it, without having to
 integrate them via third party sites.
 
-### Setting the month names in another language
+### Multilingual support for month names and fixed strings
+
+#### month names
 
 Due to the currently unavailable feature for multilingual dates in `.Date`
 from Go. It is possible to create a `month.yaml` in the data folder of your
@@ -109,7 +93,7 @@ cat > month.yaml << EOF
 EOF
 ```
 
-### Setting the language for the fixed strings
+#### fixed strings
 
 There are some fixed strings in the html files that normally uses only the set
 language. But if you create a folder `i18n/` in the root directory of your
@@ -127,7 +111,7 @@ cp ../themes/hugo-vitae/i18n/en.yaml en.yaml
 ### FontAwesome for social icons
 
 FontAwesome is mainly used for the icons of the social navbar in the top right
-corner of the theme. In the config of your hugo website there is a param
+corner of the theme. In the config of your Hugo website there is a param
 called `icon` for the `params.social` section. I could look like this:
 
 ```toml
@@ -140,112 +124,59 @@ url = "https://github.com/dataCobra/hugo-vitae"
 On the [FontAwesome](https://fontawesome.com) website, you can look up every
 free icon and also the information you need to put into this `icon` param.
 
-### Disqus
+### Site configuration options
 
-You can enable Disqus if you set `disqusShortname`. You are also able to
-specify which content types you want to disable Disqus for. There is more info
-about this feature in the section **Content type** below.
+All configuration options can be looked up in the `exampleSite/config.toml`.
 
-### Content type
+### Front matter options
 
-You can specify content type with field `type` in your content. For example
-static pages can be set as type `page` which are excluded from recent posts,
-lists and they don't show there taxonomies below the page. You can use site
-params `mainSections` and `disableDisqusTypes` to control which page types
-are excluded from recent posts and Disqus comments respectively.
+**math(bool)**
 
-```md
----
-title: "About"
-date: 2019-04-19T21:37:58+05:30
-type: "page"
----
+Add math typesetting with KaTeX to the content page.
 
-This is some static page where you can write about yourself.
-```
+**author(string) and authorlink(string)**
 
-### Taxonomies and tags
+Add author of a page and if you want, add a link to the author.
 
-Since the release of version 1.0.2 it is possible to name the keywords and
-taxonomies freely and therefore be much more flexible. Especially if you use
-the theme with a language other than English. Also, the different taxonomies
-will now be displayed below the post.
+**nofeed(bool)**
 
-Here is an example of different taxonomies in the config file:
-```toml
-[taxonomies]
-  tag = "tags"
-  series = "series"
-  author = "authors"
-```
+Don't add page to RSS.
 
-If you use one or more of these taxonomies in your posts there will be
-displayed in a new list below the content of the post.
+**notaxonomy(list)**
 
-#### Front matter "notaxonomy" for taxonomies
+Disable specific taxonomies for a page.
 
-Since release 1.0.2 Vitae shows every taxonomy a post is part of below the
-content. This could lead to a very unpleasantly large number of taxonomies
-under the post.
+**commentable(bool)**
 
-With the new front matter `notaxanomy` you can specify every taxonomy that
-should **not be visible** below the content. You can also use the type page
-as explained at **Content type** to disable the taxonomie view completely.
+Enable/Disable comments for this specific page.
 
-```md
-+++
-title = "spf13-vim 3.0 release and new website"
-date = "2012-04-06"
-description = "spf13-vim is a cross platform distribution of vim plugins and resources for Vim."
-tags = [".vimrc", "plugins", "spf13-vim", "vim"]
-series = ["learn vim","vim2.0"]
-authors = ["John Doe","Jane Doe"]
-notaxonomy = ["series","authors"]
-+++
-```
+**hidden(bool)**
 
-In the example above the post does only show the "tags" below the content.
+Hide page from the mainSection of the homepage.
 
-### Display for author/writer
+**norobots(bool)**
 
-The author/writer can now be displayed on the content page. To activate the
-function, the option `listAuthor` must be set to `true` in the config.
+Disallow page in robots.txt for search engines.
 
-If you consider to give a link to the author, just use the new front matter
-`authorlink`. This option creates a link on the author name to the selected
-website.
+**nodate(bool)**
 
-All content that has no author set, will not use this feature obviously.
+Hide the publish date of the page. Useful for about pages or pages required
+for legal reasons.
 
-### Front matter "nofeed" for RSS
+**image(string)**
 
-If you have pages, posts or other content that should not show up in the RSS
-feed of your website. You can set the new front matter `nofeed` for this
-content. It's a boolean, you could use either `true` or `false`.
+Add an image with /path/to/img to your post. If the path of the image in the
+hugo site directoy is /static/img/picture.jpg, the correct path for the front
+matter is /img/picture.jpg.
 
-If you want to modify the `index.xml` layout. Copy the Vitae layout from
-`hugo-vitae/layouts/index.xml` to your Hugo site root directory into the
-folder `layouts/` and change it the way you want.
+**imagetext(string)**
 
-### KaTex for math typesetting
-
-Now you are able to use math typesetting. With this new feature, mathematical
-formulas can be setup easy and will displayed.
-
-The files that are necessary to accomplish that are delivered directly with
-the theme and don't need to be loaded from a third party.
-
-You can either add the "math" front matter with the value "yes" to the content
-you want to be able to show formulas or you can enable this feature global
-with the math param in your websites config file.
-
-An example can be found in the folder "exampleSite" or via the
-[demo](https://themes.gohugo.io/theme/hugo-vitae/).
+This is the alternate text for the image that could be added via image front
+matter.
 
 ## Credits
 
-* [hugo-ink](https://github.com/knadh/hugo-ink) from which Vitae was forked
-* [freepik](https://www.freepik.com) for the robot avatar
+* [freepik](https://www.freepik.com) for the avatar
 * [google](https://fonts.google.com/specimen/Roboto) for the roboto fonts
 * [fontawesome](https://fontawesome.com) for providing amazing icons
 
