@@ -31,10 +31,12 @@
   {{ printf `<link rel="%s" type="%s" href="%s" title="%s">` .Rel .MediaType.Type .Permalink $.Site.Title | safeHTML }}
   {{- end -}}
   <!-- Add all css files that are necessary -->
+  <link rel="preconnect" href="https://fonts.gstatic.com">
   <link rel="stylesheet" type="text/css" media="screen" href="{{ .Site.BaseURL }}css/normalize.css" />
   <link rel="stylesheet" type="text/css" media="screen" href="{{ .Site.BaseURL }}css/main.css" />
   <link rel="stylesheet" type="text/css" media="screen" href="{{ .Site.BaseURL }}css/all.css" />
   <link rel="stylesheet" type="text/css" media="screen" href="{{ .Site.BaseURL }}css/syntax.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inconsolata&family=Playfair+Display:ital,wght@1,700&display=swap" rel="stylesheet">
   {{ partial "arc.html" . }}
   <!-- Use customcss if you like -->
   {{- if isset .Site.Params "customcss" -}}
